@@ -1,0 +1,193 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/*
+ * Minimal base layer. Calm, content-first defaults — a quiet
+ * canvas, a 14px humanist base with a comfortable reading rhythm, and one
+ * consistent focus-visible treatment. No decoration; distinctiveness comes from
+ * typography + spacing, not chrome.
+ */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    font-family: var(--font-sans);
+    /* Quiet canvas behind any overscroll. */
+    background-color: var(--color-canvas);
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-canvas);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-wrap: anywhere;
+  }
+
+  /* Prevent iOS Safari from zooming fields while retaining compact desktop forms. */
+  @media (max-width: 639px) {
+    input,
+    select,
+    textarea {
+      font-size: 16px;
+    }
+  }
+
+  /* Tabular figures for dense data surfaces (tables, configs, confidences). */
+  .nums-tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum';
+  }
+
+  /* Keyboard-first, WCAG AA visible focus — one consistent treatment. */
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Calm selection — the accent tint, never a jarring system blue. */
+  ::selection {
+    background-color: var(--color-accent-subtle);
+    color: var(--color-text);
+  }
+
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+
+  /* Respect reduced-motion: motion is already minimal, but never forced. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/*
+ * Overlay/sheet entrance motion — subtle, fast, token-timed (the design-system
+ * Dialog uses these). Reduced-motion is neutralized by the base rule above.
+ * Enter-only by design (Radix unmounts on close); never gratuitous.
+ */
+@keyframes mm-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes mm-pop-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes mm-sheet-in-left {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes mm-sheet-in-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.mm-animate-overlay {
+  animation: mm-fade-in var(--duration-base) var(--ease-out-fast);
+}
+.mm-animate-pop {
+  animation: mm-pop-in var(--duration-base) var(--ease-out-fast);
+}
+.mm-animate-sheet-left {
+  animation: mm-sheet-in-left var(--duration-base) var(--ease-out-fast);
+}
+.mm-animate-sheet-right {
+  animation: mm-sheet-in-right var(--duration-base) var(--ease-out-fast);
+}
+
+@keyframes mm-menu-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.mm-animate-menu {
+  animation: mm-menu-in var(--duration-fast) var(--ease-out-fast);
+  transform-origin: var(--radix-dropdown-menu-content-transform-origin);
+}
+
+/*
+ * Content entrance — a gentle rise-and-fade for page content and lists. `mm-stagger`
+ * cascades its direct children. Subtle and fast; reduced-motion is neutralized above.
+ */
+@keyframes mm-rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.mm-animate-rise {
+  animation: mm-rise var(--duration-base) var(--ease-out-fast) both;
+}
+
+.mm-stagger > * {
+  animation: mm-rise var(--duration-base) var(--ease-out-fast) both;
+}
+.mm-stagger > *:nth-child(1) {
+  animation-delay: 0ms;
+}
+.mm-stagger > *:nth-child(2) {
+  animation-delay: 40ms;
+}
+.mm-stagger > *:nth-child(3) {
+  animation-delay: 80ms;
+}
+.mm-stagger > *:nth-child(4) {
+  animation-delay: 120ms;
+}
+.mm-stagger > *:nth-child(5) {
+  animation-delay: 160ms;
+}
+.mm-stagger > *:nth-child(6) {
+  animation-delay: 200ms;
+}
+
+/* Keep dialog actions above iPhone home indicators without changing desktop density. */
+.mm-dialog-safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}

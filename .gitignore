@@ -1,0 +1,70 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+out/
+.next/
+.turbo/
+*.tsbuildinfo
+next-env.d.ts
+
+# Test / coverage
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+output/
+outputs/
+
+# Environment & secrets — NEVER commit real secrets; only .env.example is tracked
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors / IDE
+.idea/
+*.swp
+*.swo
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.recommended.json
+
+# Local databases / volumes
+*.sqlite
+*.sqlite3
+pgdata/
+
+# Private / local-only sample documents (never commit customer PDFs)
+private/
+
+# Local-disk StoragePort root (uploaded source PDFs + rendered page images)
+.storage/
+
+# AI debug transcript (opt-in local JSONL of model/embedding interactions — may hold PII)
+.ai-debug/
+
+# Misc
+.cache/
+tmp/
+
+# Local authentication recovery capture (contains single-use secrets).
+.auth-outbox/
+
+# Isolated development database, private credentials and sample-run outputs
+.dev/

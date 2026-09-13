@@ -1,0 +1,97 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1781379632176,
+      "tag": "0000_cooing_spirit",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1783000000000,
+      "tag": "0001_installations_and_options",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1783100000000,
+      "tag": "0002_serial_status_states",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1783200000000,
+      "tag": "0003_document_revisions_and_scopes",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1783300000000,
+      "tag": "0004_customer_factory_tag",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1783400000000,
+      "tag": "0005_document_category_and_indexable",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1783500000000,
+      "tag": "0006_contacts_and_drop_customer_slug",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1788654000000,
+      "tag": "0007_verified_identity",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1788685200000,
+      "tag": "0008_company_and_case_names",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1788697200000,
+      "tag": "0009_document_scope_invariants",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1788700800000,
+      "tag": "0010_embedding_identity",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1788704400000,
+      "tag": "0011_document_lifecycle",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1788708000000,
+      "tag": "0012_support_intake",
+      "breakpoints": true
+    }
+  ]
+}

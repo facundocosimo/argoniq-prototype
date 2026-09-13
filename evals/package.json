@@ -1,0 +1,32 @@
+{
+  "name": "@argoniq/evals",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Finite regression scenarios for unsafe advice, restricted data, and tenant isolation.",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:eval": "tsx src/run.ts",
+    "clean": "rm -rf dist .turbo *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@argoniq/contracts": "workspace:*",
+    "@argoniq/core-domain": "workspace:*",
+    "@argoniq/intelligence": "workspace:*",
+    "@argoniq/observability": "workspace:*",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@argoniq/config": "workspace:*",
+    "@types/node": "^26.4.1",
+    "eslint": "^9.39.5",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0"
+  }
+}

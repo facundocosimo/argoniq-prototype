@@ -1,0 +1,165 @@
+import { type ComboboxOption } from '@argoniq/ui';
+
+/**
+ * Country reference data for the pickers. ISO-3166-1 alpha-2 codes are
+ * the canonical value stored on sites; the flag is derived from the code (no image
+ * assets — CSP-safe regional-indicator emoji), and the name map drives the searchable
+ * country combobox and the rich site display (name over its country, with a flag). The
+ * flag works for ANY valid two-letter code even if not in the name map.
+ */
+
+/** Regional-indicator flag emoji for a 2-letter country code (e.g. "IT" → 🇮🇹). '' if invalid. */
+export function flagEmoji(code: string | null | undefined): string {
+  const cc = (code ?? '').trim().toUpperCase();
+  if (!/^[A-Z]{2}$/.test(cc)) return '';
+  const base = 0x1f1e6; // 🇦
+  return String.fromCodePoint(base + (cc.charCodeAt(0) - 65), base + (cc.charCodeAt(1) - 65));
+}
+
+/** Display name for a country code; falls back to the upper-cased code. */
+export function countryName(code: string | null | undefined): string {
+  const cc = (code ?? '').trim().toUpperCase();
+  return COUNTRY_NAMES[cc] ?? cc;
+}
+
+export const COUNTRY_NAMES: Record<string, string> = {
+  AD: 'Andorra',
+  AE: 'United Arab Emirates',
+  AL: 'Albania',
+  AM: 'Armenia',
+  AO: 'Angola',
+  AR: 'Argentina',
+  AT: 'Austria',
+  AU: 'Australia',
+  AZ: 'Azerbaijan',
+  BA: 'Bosnia & Herzegovina',
+  BD: 'Bangladesh',
+  BE: 'Belgium',
+  BG: 'Bulgaria',
+  BH: 'Bahrain',
+  BO: 'Bolivia',
+  BR: 'Brazil',
+  BY: 'Belarus',
+  CA: 'Canada',
+  CD: 'DR Congo',
+  CH: 'Switzerland',
+  CI: 'Côte d’Ivoire',
+  CL: 'Chile',
+  CM: 'Cameroon',
+  CN: 'China',
+  CO: 'Colombia',
+  CR: 'Costa Rica',
+  CU: 'Cuba',
+  CY: 'Cyprus',
+  CZ: 'Czechia',
+  DE: 'Germany',
+  DK: 'Denmark',
+  DO: 'Dominican Republic',
+  DZ: 'Algeria',
+  EC: 'Ecuador',
+  EE: 'Estonia',
+  EG: 'Egypt',
+  ES: 'Spain',
+  ET: 'Ethiopia',
+  FI: 'Finland',
+  FJ: 'Fiji',
+  FR: 'France',
+  GB: 'United Kingdom',
+  GE: 'Georgia',
+  GH: 'Ghana',
+  GR: 'Greece',
+  GT: 'Guatemala',
+  HK: 'Hong Kong',
+  HN: 'Honduras',
+  HR: 'Croatia',
+  HU: 'Hungary',
+  ID: 'Indonesia',
+  IE: 'Ireland',
+  IL: 'Israel',
+  IN: 'India',
+  IQ: 'Iraq',
+  IR: 'Iran',
+  IS: 'Iceland',
+  IT: 'Italy',
+  JO: 'Jordan',
+  JP: 'Japan',
+  KE: 'Kenya',
+  KH: 'Cambodia',
+  KR: 'South Korea',
+  KW: 'Kuwait',
+  KZ: 'Kazakhstan',
+  LA: 'Laos',
+  LB: 'Lebanon',
+  LI: 'Liechtenstein',
+  LK: 'Sri Lanka',
+  LT: 'Lithuania',
+  LU: 'Luxembourg',
+  LV: 'Latvia',
+  MA: 'Morocco',
+  MC: 'Monaco',
+  MD: 'Moldova',
+  ME: 'Montenegro',
+  MK: 'North Macedonia',
+  MM: 'Myanmar',
+  MN: 'Mongolia',
+  MT: 'Malta',
+  MU: 'Mauritius',
+  MX: 'Mexico',
+  MY: 'Malaysia',
+  NG: 'Nigeria',
+  NI: 'Nicaragua',
+  NL: 'Netherlands',
+  NO: 'Norway',
+  NP: 'Nepal',
+  NZ: 'New Zealand',
+  OM: 'Oman',
+  PA: 'Panama',
+  PE: 'Peru',
+  PG: 'Papua New Guinea',
+  PH: 'Philippines',
+  PK: 'Pakistan',
+  PL: 'Poland',
+  PR: 'Puerto Rico',
+  PT: 'Portugal',
+  PY: 'Paraguay',
+  QA: 'Qatar',
+  RO: 'Romania',
+  RS: 'Serbia',
+  RU: 'Russia',
+  SA: 'Saudi Arabia',
+  SE: 'Sweden',
+  SG: 'Singapore',
+  SI: 'Slovenia',
+  SK: 'Slovakia',
+  SM: 'San Marino',
+  SN: 'Senegal',
+  SY: 'Syria',
+  TH: 'Thailand',
+  TN: 'Tunisia',
+  TR: 'Türkiye',
+  TW: 'Taiwan',
+  TZ: 'Tanzania',
+  UA: 'Ukraine',
+  UG: 'Uganda',
+  US: 'United States',
+  UY: 'Uruguay',
+  UZ: 'Uzbekistan',
+  VE: 'Venezuela',
+  VN: 'Vietnam',
+  XK: 'Kosovo',
+  YE: 'Yemen',
+  ZA: 'South Africa',
+  ZM: 'Zambia',
+  ZW: 'Zimbabwe',
+};
+
+/** Country options (flag + name), sorted by name — for the country picker. */
+export const COUNTRY_OPTIONS: ComboboxOption[] = Object.entries(COUNTRY_NAMES)
+  .map(([code, name]) => ({
+    value: code,
+    label: name,
+    description: code,
+    leading: flagEmoji(code),
+    keywords: [code],
+  }))
+  .sort((a, b) => a.label.localeCompare(b.label));

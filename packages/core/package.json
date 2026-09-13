@@ -1,0 +1,45 @@
+{
+  "name": "@argoniq/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Application services, access policies, audit events, and API routing.",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./trpc": {
+      "types": "./src/interfaces/trpc/index.ts",
+      "default": "./src/interfaces/trpc/index.ts"
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@argoniq/auth": "workspace:*",
+    "@argoniq/contracts": "workspace:*",
+    "@argoniq/core-domain": "workspace:*",
+    "@argoniq/db": "workspace:*",
+    "@argoniq/intelligence": "workspace:*",
+    "@argoniq/jobs": "workspace:*",
+    "@argoniq/notifications": "workspace:*",
+    "@argoniq/observability": "workspace:*",
+    "@argoniq/storage": "workspace:*",
+    "@trpc/server": "^11.18.0",
+    "drizzle-orm": "^0.45.2",
+    "superjson": "^2.2.6",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@argoniq/config": "workspace:*",
+    "@types/node": "^26.4.1",
+    "eslint": "^9.39.5",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0"
+  }
+}

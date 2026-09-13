@@ -1,0 +1,17 @@
+# Workspace packages, the web application, background services, and evaluations.
+packages:
+  - 'apps/*'
+  - 'packages/*'
+  - 'services/*'
+  - 'evals'
+# Dependency-graph settings (pnpm 10+ reads these from the workspace manifest). They
+# used to live in .npmrc but are pnpm-only keys, so `npm` warned about them — see .npmrc.
+autoInstallPeers: true # packages must declare what they import; peers resolve automatically.
+strictPeerDependencies: false
+shamefullyHoist: false # hoist as little as possible so phantom dependencies are caught early.
+# Dependencies whose install/build scripts are allowed to run (pnpm 10+ blocks by
+# default). esbuild needs to fetch/link its platform binary for vitest/tsx/drizzle-kit.
+allowBuilds:
+  esbuild: true
+  # Next.js image optimization native binary.
+  sharp: true

@@ -1,0 +1,40 @@
+{
+  "name": "argoniq",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Development prototype for customer support around industrial machinery.",
+  "type": "module",
+  "packageManager": "pnpm@12.3.4",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=12.0.0"
+  },
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "node tools/dev/run.mjs portal",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint -- --fix",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "test:eval": "turbo run test:eval",
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json,css,yaml,yml}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md,mdx,json,css,yaml,yml}\"",
+    "db:generate": "pnpm --filter @argoniq/db db:generate",
+    "db:migrate": "pnpm --filter @argoniq/db db:migrate",
+    "db:studio": "pnpm --filter @argoniq/db db:studio",
+    "seed": "node tools/dev/run.mjs seed",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "turbo": "^2.10.12",
+    "typescript": "^6.0.3",
+    "vite": "^8.2.2"
+  }
+}

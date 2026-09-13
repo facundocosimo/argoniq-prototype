@@ -1,0 +1,265 @@
+/*
+ * Shared design tokens. Tenant branding and dark or compact modes override these
+ * values without changing component code. Light is the default theme.
+ *
+ * Tailwind v4 is CSS-first: the @theme block registers these tokens as Tailwind
+ * utilities (bg-canvas, text-text-muted, rounded-md, text-2xl, …). Runtime-themeable
+ * values are CSS custom properties so an OEM theme can override them per tenant
+ * without rebuilding.
+ */
+
+/* ── Runtime-overridable custom properties (light = default) ───────────────── */
+:root {
+  /*
+   * Neutral ramp (Instrument). The app sits on a near-white `canvas` (bg); content
+   * lifts on crisp white `bg` (surface); `surface`/`surface-subtle` are the inset/
+   * hover fills (s2/s3). Cool grey with no warm cast — instrument-clean.
+   */
+  --mm-color-canvas: #fbfbfc;
+  --mm-color-bg: #ffffff;
+  --mm-color-surface: #f4f4f6;
+  --mm-color-surface-subtle: #eaebee;
+  --mm-color-border: #e6e7eb;
+  --mm-color-border-strong: #d4d6dc;
+
+  /* Sidebar chrome — clean WHITE navigation chrome (sidebar + topbar) that floats
+     above a slightly greyer content canvas. Its own text/active/hover tokens keep the
+     rail cohesive and let the active row read as a quiet accent-tinted fill (no bar,
+     no glow). Modern, flat, and calm. */
+  --mm-color-sidebar: #ffffff;
+  --mm-color-sidebar-elevated: #f4f4f6;
+  --mm-color-sidebar-border: #e6e7eb;
+  --mm-color-sidebar-text: #17181c;
+  --mm-color-sidebar-text-muted: #5d616b;
+  --mm-color-sidebar-text-subtle: #666b77;
+  --mm-color-sidebar-hover: #f4f4f6;
+  --mm-color-sidebar-active: #eaeef8;
+  --mm-color-sidebar-active-text: #1f45a0;
+  --mm-color-sidebar-accent: #1f45a0;
+
+  /* Text ramp — near-black ink, two quieter steps below it (Instrument neutrals). */
+  --mm-color-text: #17181c;
+  --mm-color-text-muted: #5d616b;
+  --mm-color-text-subtle: #666b77;
+
+  /* One restrained accent — a deep instrument blue (#1F45A0): confident, precise,
+     clearly distinct from the green/amber/red safety zones. */
+  --mm-color-accent: #1f45a0;
+  --mm-color-accent-hover: #183881;
+  --mm-color-accent-subtle: #eaeef8;
+  --mm-color-accent-contrast: #ffffff;
+
+  /* Muted safety-zone colors with a subtle tint for borders and inline washes. */
+  --mm-color-zone-green: #4c7a57;
+  --mm-color-zone-green-subtle: #eef2ec;
+  --mm-color-zone-amber: #96702a;
+  --mm-color-zone-amber-subtle: #f5efe2;
+  --mm-color-zone-red: #a44b33;
+  --mm-color-zone-red-subtle: #f4ebe7;
+
+  /* Danger surface for destructive primitives (maps to the RED zone family). */
+  --mm-color-danger: #a44b33;
+  --mm-color-danger-contrast: #ffffff;
+
+  /* High-contrast keyboard focus ring. */
+  --mm-color-focus: #1f45a0;
+
+  /* ArgonIQ brand accent — the corporate blue of the mark's "IQ" spark. Distinct
+     from the app's tool accent; this is used only by the shared Logo wordmark and
+     brand chrome. */
+  --mm-color-brand: #1559d6;
+  --mm-color-brand-strong: #0f47b4;
+
+  /* Typography (Instrument) — a neutral grotesk (Schibsted Grotesk) for UI and
+     display, with IBM Plex Mono for data (serials, counts, tiers, tabular numbers).
+     Both self-hosted via next/font → the --mm-font-* variables; named/system
+     fallbacks keep them safe pre-hydration. */
+  --mm-font-sans:
+    var(--mm-font-schibsted), 'Schibsted Grotesk', ui-sans-serif, system-ui, -apple-system,
+    'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --mm-font-mono:
+    var(--mm-font-plex-mono), 'IBM Plex Mono', ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo,
+    Consolas, monospace;
+
+  /* Elevation (Instrument) — flat framed modules: in-flow cards carry NO shadow;
+     hairline borders do the structural work. Only true overlays (menus, dialogs,
+     toasts) lift, and only softly. */
+  --mm-shadow-xs: none;
+  --mm-shadow-sm: 0 1px 2px rgb(20 22 28 / 0.06);
+  --mm-shadow-md: 0 4px 14px -4px rgb(20 22 28 / 0.12), 0 1px 3px rgb(20 22 28 / 0.06);
+
+  /* Density seam — table/list row rhythm; [data-density] overrides this only. */
+  --mm-density-row-py: 0.5rem;
+}
+
+/* ── Dark theme — additional token set layered on top, never a fork ────────── */
+[data-theme='dark'] {
+  --mm-color-canvas: #0a0a0c;
+  --mm-color-bg: #141519;
+  --mm-color-surface: #1b1c21;
+  --mm-color-surface-subtle: #17181b;
+  --mm-color-border: #26282e;
+  --mm-color-border-strong: #3a3c44;
+
+  /* Dark: the chrome is the lighter surface, floating above the darker content canvas. */
+  --mm-color-sidebar: #141519;
+  --mm-color-sidebar-elevated: #1b1c21;
+  --mm-color-sidebar-border: #26282e;
+  --mm-color-sidebar-text: #ebecef;
+  --mm-color-sidebar-text-muted: #9ea1ab;
+  --mm-color-sidebar-text-subtle: #9297a3;
+  --mm-color-sidebar-hover: #1b1c21;
+  --mm-color-sidebar-active: #1a2438;
+  --mm-color-sidebar-active-text: #6e9bf2;
+  --mm-color-sidebar-accent: #6e9bf2;
+
+  --mm-color-text: #ebecef;
+  --mm-color-text-muted: #9ea1ab;
+  --mm-color-text-subtle: #9297a3;
+
+  --mm-color-accent: #6e9bf2;
+  --mm-color-accent-hover: #89adf5;
+  --mm-color-accent-subtle: #1a2438;
+  --mm-color-accent-contrast: #0a1220;
+
+  --mm-color-zone-green: #7bae84;
+  --mm-color-zone-green-subtle: #16241a;
+  --mm-color-zone-amber: #c79a54;
+  --mm-color-zone-amber-subtle: #26200f;
+  --mm-color-zone-red: #c67a60;
+  --mm-color-zone-red-subtle: #271612;
+
+  --mm-color-danger: #c67a60;
+  --mm-color-danger-contrast: #0a0a0c;
+
+  --mm-color-focus: #6e9bf2;
+
+  /* Brand accent lifts on dark surfaces (the wordmark's "IQ" on navy chrome). */
+  --mm-color-brand: #5d98f8;
+  --mm-color-brand-strong: #2c74f1;
+
+  /* Overlays on dark need a touch more lift to separate from the surface. */
+  --mm-shadow-xs: none;
+  --mm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.5);
+  --mm-shadow-md: 0 4px 16px -4px rgb(0 0 0 / 0.6), 0 1px 3px rgb(0 0 0 / 0.4);
+}
+
+/* ── Compact density — denser row rhythm for shop-floor / dense tables ─────── */
+[data-density='compact'] {
+  --mm-density-row-py: 0.3125rem;
+}
+
+/*
+ * Tailwind v4 @theme — registers the tokens above as first-class utilities.
+ * Spacing is a strict 4px scale; radii are small and deliberate (sm 2 / md 3 /
+ * lg 4); type is a true modular scale at a 14px base with paired line-heights and
+ * tight tracking on headings; motion is minimal and fast (120–160ms).
+ */
+@theme {
+  --color-canvas: var(--mm-color-canvas);
+  --color-bg: var(--mm-color-bg);
+  --color-surface: var(--mm-color-surface);
+  --color-surface-subtle: var(--mm-color-surface-subtle);
+  --color-border: var(--mm-color-border);
+  --color-border-strong: var(--mm-color-border-strong);
+  --color-sidebar: var(--mm-color-sidebar);
+  --color-sidebar-elevated: var(--mm-color-sidebar-elevated);
+  --color-sidebar-border: var(--mm-color-sidebar-border);
+  --color-sidebar-text: var(--mm-color-sidebar-text);
+  --color-sidebar-text-muted: var(--mm-color-sidebar-text-muted);
+  --color-sidebar-text-subtle: var(--mm-color-sidebar-text-subtle);
+  --color-sidebar-hover: var(--mm-color-sidebar-hover);
+  --color-sidebar-active: var(--mm-color-sidebar-active);
+  --color-sidebar-active-text: var(--mm-color-sidebar-active-text);
+  --color-sidebar-accent: var(--mm-color-sidebar-accent);
+
+  --color-text: var(--mm-color-text);
+  --color-text-muted: var(--mm-color-text-muted);
+  --color-text-subtle: var(--mm-color-text-subtle);
+
+  --color-accent: var(--mm-color-accent);
+  --color-accent-hover: var(--mm-color-accent-hover);
+  --color-accent-subtle: var(--mm-color-accent-subtle);
+  --color-accent-contrast: var(--mm-color-accent-contrast);
+
+  --color-zone-green: var(--mm-color-zone-green);
+  --color-zone-green-subtle: var(--mm-color-zone-green-subtle);
+  --color-zone-amber: var(--mm-color-zone-amber);
+  --color-zone-amber-subtle: var(--mm-color-zone-amber-subtle);
+  --color-zone-red: var(--mm-color-zone-red);
+  --color-zone-red-subtle: var(--mm-color-zone-red-subtle);
+
+  --color-danger: var(--mm-color-danger);
+  --color-danger-contrast: var(--mm-color-danger-contrast);
+
+  --color-focus: var(--mm-color-focus);
+
+  --color-brand: var(--mm-color-brand);
+  --color-brand-strong: var(--mm-color-brand-strong);
+
+  --font-sans: var(--mm-font-sans);
+  --font-mono: var(--mm-font-mono);
+
+  /* True modular type scale (14px base). Each size pairs a comfortable
+     line-height; headings tighten tracking via the tokens below. */
+  --text-xs: 0.75rem; /* 12 */
+  --text-xs--line-height: 1rem; /* 16 */
+  --text-sm: 0.8125rem; /* 13 */
+  --text-sm--line-height: 1.25rem; /* 20 */
+  --text-base: 0.875rem; /* 14 */
+  --text-base--line-height: 1.375rem; /* 22 */
+  --text-md: 0.9375rem; /* 15 */
+  --text-md--line-height: 1.5rem; /* 24 */
+  --text-lg: 1rem; /* 16 */
+  --text-lg--line-height: 1.5rem; /* 24 */
+  --text-xl: 1.125rem; /* 18 */
+  --text-xl--line-height: 1.625rem; /* 26 */
+  --text-2xl: 1.375rem; /* 22 */
+  --text-2xl--line-height: 1.75rem; /* 28 */
+  --text-3xl: 1.75rem; /* 28 */
+  --text-3xl--line-height: 2.125rem; /* 34 */
+  --text-4xl: 2.125rem; /* 34 */
+  --text-4xl--line-height: 2.5rem; /* 40 */
+
+  /* Heading tracking — restrained negative tracking for optical tightness. */
+  --tracking-tight: -0.012em;
+  --tracking-tighter: -0.021em;
+
+  /* Near-zero radii (Instrument) — hairline-precise, industrial. Inputs/buttons
+     read as barely-softened rectangles; cards a hair more. */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+
+  /* 4px base spacing scale. */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+
+  /* Named layout dimensions (kills arbitrary values like max-w-[85vw]).
+     Usable as h-topbar, w-sidebar, w-sidebar-collapsed, w-drawer, max-w-drawer. */
+  --spacing-topbar: 3.5rem; /* 56 */
+  --spacing-sidebar: 15rem; /* 240 */
+  --spacing-sidebar-collapsed: 4rem; /* 64 */
+  --spacing-drawer: min(18rem, 85vw); /* 288, capped on small screens */
+  --spacing-modal: min(32rem, calc(100vw - 2rem)); /* centered-dialog width, gutter-capped */
+  --spacing-modal-height: calc(100dvh - 2rem); /* centered-dialog height, phone-gutter-capped */
+  --spacing-content: 64rem; /* max content measure for reading surfaces */
+
+  --shadow-xs: var(--mm-shadow-xs);
+  --shadow-sm: var(--mm-shadow-sm);
+  --shadow-md: var(--mm-shadow-md);
+
+  /* Motion — fast, ease-out, no gratuitous animation. */
+  --ease-out-fast: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --duration-fast: 120ms;
+  --duration-base: 160ms;
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@argoniq/worker",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Background worker for document processing and support-delivery retries.",
+  "scripts": {
+    "dev": "node --env-file-if-exists=../../.env --watch --import tsx src/index.ts",
+    "start": "tsx src/index.ts",
+    "embed:backfill": "tsx src/scripts/backfill-embeddings.ts",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@argoniq/core-domain": "workspace:*",
+    "@argoniq/db": "workspace:*",
+    "@argoniq/intelligence": "workspace:*",
+    "@argoniq/jobs": "workspace:*",
+    "@argoniq/observability": "workspace:*",
+    "@argoniq/storage": "workspace:*",
+    "@napi-rs/canvas": "^1.0.8",
+    "pdfjs-dist": "^6.3.289",
+    "pg-boss": "^12.30.0",
+    "zod": "^4.5.4",
+    "@argoniq/notifications": "workspace:*"
+  },
+  "devDependencies": {
+    "@argoniq/config": "workspace:*",
+    "@types/node": "^26.4.1",
+    "eslint": "^9.39.5",
+    "postgres": "^3.4.9",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0"
+  }
+}

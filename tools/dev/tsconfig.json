@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": false,
+    "rootDir": "../..",
+    "types": ["node"],
+    "typeRoots": ["../../packages/db/node_modules/@types"]
+  },
+  "include": ["*.ts", "*.mjs"]
+}

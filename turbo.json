@@ -1,0 +1,69 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "stream",
+  "globalDependencies": ["tsconfig.base.json", ".env"],
+  "globalEnv": ["NODE_ENV", "CI"],
+  "//": "Turbo runs tasks in strict env mode \u2014 only declared vars reach a task. Apps load .env themselves (Next reads apps/*/.env); these pass a sourced ambient env through to every task (the worker, db scripts) without affecting the cache hash.",
+  "globalPassThroughEnv": [
+    "APP_URL",
+    "ALLOWED_ORIGINS",
+    "DATABASE_URL",
+    "DATABASE_MIGRATION_URL",
+    "PGBOSS_DATABASE_URL",
+    "AUTH_SECRET",
+    "AUTH_TRUST_HOST",
+    "AUTH_SMTP_URL",
+    "AUTH_EMAIL_FROM",
+    "DEMO_AUTH_ENABLED",
+    "AI_MODE",
+    "AI_GATEWAY_API_KEY",
+    "OPENAI_API_KEY",
+    "ANTHROPIC_API_KEY",
+    "AI_MODEL_CLASSIFY",
+    "AI_MODEL_ANSWER",
+    "AI_MODEL_REASON",
+    "AI_EMBEDDING_MODEL",
+    "AI_REASONING_EFFORT",
+    "AI_TIMEOUT_MS",
+    "LOG_LEVEL",
+    "AI_DEBUG_TRANSCRIPT",
+    "AI_DEBUG_TRANSCRIPT_FILE",
+    "STORAGE_LOCAL_ROOT",
+    "STORAGE_BUCKET",
+    "STORAGE_REGION",
+    "STORAGE_ENDPOINT",
+    "STORAGE_ACCESS_KEY_ID",
+    "STORAGE_SECRET_ACCESS_KEY",
+    "SUPPORT_ROUTES",
+    "SUPPORT_EMAIL_API_KEY",
+    "SUPPORT_EMAIL_FROM"
+  ],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "lint": {
+      "dependsOn": ["^build"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "outputs": [".tsbuildinfo", "*.tsbuildinfo"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"]
+    },
+    "test:eval": {
+      "dependsOn": ["^build"],
+      "cache": false
+    },
+    "clean": {
+      "cache": false
+    }
+  }
+}

@@ -1,0 +1,28 @@
+/* App stylesheet entry: shared styles first, then the files Tailwind scans. */
+@import '@argoniq/ui/styles.css';
+
+@source '../app';
+@source '../components';
+@source '../lib';
+@source '../../../packages/ui/src';
+
+/* Theme switch: reveal the new view from the click point without a cross-fade. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* NProgress sets transitions inline; reduced-motion must override those too. */
+  #nprogress.bar {
+    transition: none !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}

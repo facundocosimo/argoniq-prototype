@@ -1,0 +1,71 @@
+{
+  "name": "@argoniq/intelligence",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Document retrieval, question answering, safety checks, and source validation.",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./symptom": {
+      "types": "./src/symptom/index.ts",
+      "default": "./src/symptom/index.ts"
+    },
+    "./diagnosis": {
+      "types": "./src/diagnosis/index.ts",
+      "default": "./src/diagnosis/index.ts"
+    },
+    "./questioning": {
+      "types": "./src/questioning/index.ts",
+      "default": "./src/questioning/index.ts"
+    },
+    "./safety": {
+      "types": "./src/safety/index.ts",
+      "default": "./src/safety/index.ts"
+    },
+    "./governance": {
+      "types": "./src/governance/index.ts",
+      "default": "./src/governance/index.ts"
+    },
+    "./llm": {
+      "types": "./src/llm/index.ts",
+      "default": "./src/llm/index.ts"
+    },
+    "./embeddings": {
+      "types": "./src/embeddings/index.ts",
+      "default": "./src/embeddings/index.ts"
+    },
+    "./ingestion": {
+      "types": "./src/ingestion/index.ts",
+      "default": "./src/ingestion/index.ts"
+    },
+    "./pipeline": {
+      "types": "./src/pipeline/index.ts",
+      "default": "./src/pipeline/index.ts"
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.49",
+    "@ai-sdk/openai": "^4.0.59",
+    "@argoniq/contracts": "workspace:*",
+    "@argoniq/core-domain": "workspace:*",
+    "@argoniq/observability": "workspace:*",
+    "ai": "^7.0.93",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@argoniq/config": "workspace:*",
+    "@types/node": "^26.4.1",
+    "eslint": "^9.39.5",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0"
+  }
+}

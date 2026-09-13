@@ -1,0 +1,30 @@
+{
+  "name": "@argoniq/storage",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "File storage interface with a local development implementation.",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@argoniq/core-domain": "workspace:*",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@argoniq/config": "workspace:*",
+    "@types/node": "^26.4.1",
+    "eslint": "^9.39.5",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0"
+  }
+}

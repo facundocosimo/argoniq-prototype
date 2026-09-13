@@ -1,0 +1,38 @@
+{
+  "name": "@argoniq/notifications",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Notifications and support-request delivery adapters.",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./support": {
+      "types": "./src/support-routing.ts",
+      "default": "./src/support-routing.ts"
+    },
+    "./delivery": {
+      "types": "./src/support-delivery.ts",
+      "default": "./src/support-delivery.ts"
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@argoniq/core-domain": "workspace:*",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@argoniq/config": "workspace:*",
+    "eslint": "^9.39.5",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0",
+    "@types/node": "^26.4.1"
+  }
+}

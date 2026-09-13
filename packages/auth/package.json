@@ -1,0 +1,35 @@
+{
+  "name": "@argoniq/auth",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Authentication, membership, and access-control rules.",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./ability": {
+      "types": "./src/ability.ts",
+      "default": "./src/ability.ts"
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "clean": "rm -rf dist .turbo *.tsbuildinfo"
+  },
+  "dependencies": {
+    "@argoniq/core-domain": "workspace:*",
+    "@argoniq/observability": "workspace:*",
+    "@casl/ability": "^7.0.1",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@argoniq/config": "workspace:*",
+    "eslint": "^9.39.5",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.0"
+  }
+}
