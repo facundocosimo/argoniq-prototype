@@ -147,8 +147,8 @@ The eval suite is a finite set of synthetic scenarios for unsafe advice,
 restricted-content leakage, and cross-tenant output. A passing run is useful
 regression evidence, not a general safety guarantee.
 
-## Licence
+## License
 
-This repository is source-available for review and local, non-production
-evaluation under the [ArgonIQ Evaluation License 1.0](LICENSE). It is not open
-source. No customer deployment or service is offered through this repository.
+ArgonIQ is open source under the [MIT License](LICENSE). The repository is a
+development snapshot; no customer deployment or hosted service is offered
+through it.

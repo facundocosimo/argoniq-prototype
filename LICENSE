@@ -1,21 +1,21 @@
-ArgonIQ Evaluation License 1.0
+MIT License
 
 Copyright (c) 2026 Facundo Cosimo
 
-Permission is granted, free of charge, to view, download, copy, install, run,
-and modify this software solely for local, non-production evaluation. Permitted
-evaluation includes technical review, education, and hiring assessment.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-This licence does not permit production use, operation for a third party,
-commercial exploitation, distribution, publication, sublicensing, sale, or use
-of the ArgonIQ name or marks. Modified copies may be kept only for the permitted
-evaluation and may not be distributed. Copyright and licence notices must be
-retained.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING
-FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR ITS USE.
-
-All rights not expressly granted are reserved.
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
