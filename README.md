@@ -2,6 +2,9 @@
 
 ArgonIQ is a development prototype for customer support around industrial machinery.
 
+This repository is a sanitized public snapshot for code review. It does not
+include the private development history or any real customer data.
+
 It brings machine records, technical manuals, customer questions, and support
 requests into one workspace. A user selects a machine, opens the documents
 available for that machine, asks a technical question, and can prepare a support
