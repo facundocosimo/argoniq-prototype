@@ -10,22 +10,22 @@ request for the manufacturer.
 All examples in this repository use fictional companies, machines, people, and
 documents. They are software fixtures, not operating instructions.
 
-> **Status:** ArgonIQ is not a production customer release. Invitation-based
+> **Status:** ArgonIQ is not ready for production use. Invitation-based
 > onboarding, complete document publication and revision controls, verification
 > of generated claims, production file storage, and the full case lifecycle are
 > still incomplete.
 
 ## What currently works
 
-- Authenticated manufacturer, customer, and platform workspaces
+- Separate signed-in views for manufacturer, customer, and platform users
 - Companies, sites, contacts, machine models, production lines, and installed machines
 - Machine-specific configuration and document access
 - PDF upload, text extraction, indexing, and source viewing
 - Technical questions using the selected machine and permitted document context
 - Source references displayed beside generated answers
 - Editable support requests with attachments and explicit confirmation before sending
-- A manufacturer inbox, with optional email and Salesforce delivery adapters
-- Server-side permissions and PostgreSQL row-level isolation
+- A manufacturer case queue, with optional email and Salesforce delivery adapters
+- Server-side permission checks and PostgreSQL row-level security policies
 - Unit and integration tests, plus automated checks for unsafe guidance,
   restricted-data leakage, and tenant isolation
 
